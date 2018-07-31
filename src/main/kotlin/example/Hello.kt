@@ -1,7 +1,20 @@
 package example
 
 fun main(args: Array<String>) {
-    println(hello("Kotlin"))
+    val lines = listOf(
+            "Hello，大家好!",
+            "Hello",
+            "大家好",
+            "_sdfsdf",
+            "大家好  ",
+            "大x家好"
+    )
+
+    lines.forEach { text ->
+        println("$text: ${isChinese(text)}")
+    }
 }
 
-fun hello(name: String): String = "Hello, $name!"
+private fun isChinese(text: String): Boolean {
+    return text.matches("""[\u4e00-\u9eff]+""".toRegex())
+}
